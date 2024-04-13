@@ -17,11 +17,14 @@ public class Ejercicio10InvertirNumero {
 
     public static void ejemplo() {
         int numero;
+        String cifras;
         System.out.println("Numero invertido 0 para finalizar: ");
         do {
             System.out.print("Ingresa un numero: ");
             numero = sc.nextInt();
             System.out.println("Numero invertido es: " + invertir(numero));
+            cifras = String.valueOf(numero);
+        System.out.println("Numer invertido recursivo: "+invertirNumero(numero,cifras.length()-1));
 
         } while (numero != 0);
     }
@@ -34,5 +37,14 @@ public class Ejercicio10InvertirNumero {
             numero = numero / 10;
         }
         return invertido;
+    }
+    
+    //forma recursividad 
+     private static int invertirNumero(int num, int pos){
+        if(num<10){
+            return num;
+        } else {
+            return (num%10) * (int) Math.pow(10, pos) + invertirNumero(num/10, pos-1); 
+        }
     }
 }
